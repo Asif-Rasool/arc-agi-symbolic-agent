@@ -54,6 +54,8 @@ params:
         url: "home/"
       - name: "Approach"
         url: "approach/"
+      - name: "Architecture"
+        url: "architecture/"
       - name: "Results"
         url: "results/"
       - name: "Examples"

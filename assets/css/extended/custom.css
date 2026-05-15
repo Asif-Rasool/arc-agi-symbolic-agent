@@ -75,6 +75,16 @@
   color: var(--darkcolor);
 }
 
+.profile .profile_inner {
+  width: 100%;
+  max-width: 720px;
+}
+
+.profile .profile_inner h1 {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
 .profile-subtitle {
   display: block;
   width: 100%;
@@ -90,6 +100,7 @@
 }
 
 .profile-intro {
+  width: 100%;
   max-width: 680px;
   margin: 10px 0 4px;
   font-size: 0.98rem;
@@ -100,6 +111,23 @@
 .profile-intro p {
   margin: 0 0 10px;
   text-align: left;
+}
+
+.profile .buttons {
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-top: 2px;
+  max-width: 100%;
+}
+
+.profile .button {
+  margin: 0;
+  padding: 9px 10px;
+  white-space: nowrap;
+}
+
+.profile .button-inner {
+  padding: 0 4px;
 }
 
 .post-header {
@@ -114,6 +142,16 @@
 .post-content p,
 .post-content li {
   text-align: left;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.post-content pre {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .post-content .weekly-schedule table {
@@ -310,6 +348,19 @@
   }
 }
 
+@media screen and (max-width: 760px) {
+  .profile .buttons {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .profile .button {
+    flex: 1 1 calc(50% - 8px);
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 600px) {
   :root {
     --textsize: 16px;
@@ -339,10 +390,15 @@
 
   .buttons {
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .button {
     margin: 4px 6px 4px 0;
+  }
+
+  .profile .button {
+    margin: 0;
   }
 
   .post-header {
@@ -372,5 +428,15 @@
     bottom: 1rem;
     width: 42px;
     height: 42px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .profile .button {
+    flex-basis: 100%;
+  }
+
+  .profile .profile_inner h1 {
+    font-size: 1.8rem;
   }
 }
