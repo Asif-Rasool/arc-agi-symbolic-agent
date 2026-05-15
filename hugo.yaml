@@ -42,13 +42,13 @@ params:
     title: "A Knowledge-Based Agent for ARC-AGI"
     subtitle: "<span class=\"profile-created\">by <a href=\"https://www.asifrasool.net\">Asif Rasool</a>.</span>"
     intro: |
-      In 2019, François Chollet introduced the Abstraction and Reasoning Corpus, now commonly referred to as ARC-AGI, in his paper ["On the Measure of Intelligence"](https://arxiv.org/abs/1911.01547). The benchmark was designed to evaluate fluid intelligence through unfamiliar visual reasoning tasks.
+      In 2019, François Chollet introduced the Abstraction and Reasoning Corpus, now commonly called ARC-AGI, in ["On the Measure of Intelligence"](https://arxiv.org/abs/1911.01547). The benchmark focuses on fluid intelligence through unfamiliar visual reasoning tasks.
 
-      The idea is that intelligence is not just skill on tasks a system has already seen. A better measure is skill-acquisition efficiency: how quickly a system can learn a new kind of problem from limited examples and apply that learning to a new case.
+      The core idea is skill-acquisition efficiency: how quickly a system can learn a new kind of problem from a few examples and apply that learning to a new case.
 
-      The benchmark is built around simple grids, colors, objects, and spatial relationships rather than domain facts or language knowledge. The goal is to test fluid reasoning: recognizing structure, forming abstractions, and applying a rule to a new case without relying on massive task-specific training.
+      ARC-AGI uses simple grids, colors, objects, and spatial relationships in place of domain facts or language knowledge. Its tasks ask a solver to recognize structure, form an abstraction, and apply a rule from a small number of examples.
 
-      I approached my agent from that perspective. Instead of treating ARC-AGI as a prediction problem, I treated each task as a search for an explanation, somewhat similar to case-based reasoning in Knowledge-Based AI (KBAI) terms. The agent tries to identify the structure of the examples, retrieve plausible symbolic concepts, fit candidate explanations, and choose the one most likely to generalize.
+      I approached my agent from that perspective. I treated each task as a search for an explanation, similar in spirit to case-based reasoning in Knowledge-Based AI. The agent reads the structure of the examples, retrieves plausible symbolic concepts, fits candidate explanations, and chooses the one most likely to generalize.
     buttons:
       - name: "Home"
         url: "home/"

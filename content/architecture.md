@@ -6,28 +6,42 @@ title: "Architecture"
 
 ![High-level ARC-AGI agent architecture](../images/architecture.png)
 
-In `ArcAgent.py`, I organized the implementation around the same reasoning loop described in the approach page. I tried to keep the major pieces separate so I could debug the agent by asking where a candidate explanation entered, passed, ranked, or failed.
+I organized the agent as a reasoning pipeline. Each stage has a specific role: understand the task, narrow the search, test possible explanations, rank the strongest candidates, repair fragile choices, and generate final predictions.
 
-`FeatureExtractor` reads the training pairs and builds a `ProblemFeatures` object. I use that object as a compact description of the task: shapes, colors, background behavior, separators, component counts, density, and other structural cues. The goal is to give the rest of the system a useful frame before any concept tries to solve the task.
+The main design goal was inspectability. I wanted to know why an answer was chosen and where the reasoning failed when the answer was wrong.
 
-`ProblemClassifier` uses those features to form a coarse judgment about the problem. It separates tasks that look like extraction, composition, shape preservation, generation, or object-relational reasoning.
+## Reading the Task
 
-`ConceptRegistry` then selects concept families whose applicability scores are positive for the current problem. Each symbolic concept class inherits from `Concept` and knows how to fit one kind of explanation. Some concepts are narrow, such as a direct crop or color mapping. Others generate several variants because the broad idea can appear in more than one form.
+The first stage gives the agent a compact view of the training examples. It looks at structural cues such as grid size, output size, colors, background color, object components, density, separators, and whether the output looks like a crop, a transformation, a generated pattern, or a composition of multiple regions.
 
-When a concept fits, it produces a `FittedConcept`. The fitted object is the actual explanation the agent can test and apply. It contains the chosen parameters and a deterministic prediction routine.
+The stage gives the rest of the system a better starting point. A separator suggests panel comparison, a smaller output suggests extraction, and a larger symmetric output suggests generative structure.
 
-`Validator` checks fitted hypotheses against the visible training pairs. Exact fits become the strongest candidates. Near misses are still useful because they may preserve the right abstraction with one local choice wrong.
+## Searching Through Concepts
 
-`Ranker` orders the candidates after validation. It uses visible fit, residual error, confidence, complexity, and structural agreement with the problem frame. `CaseMemory` adds a small analogy signal within the current problem, with no cross-task learning or carryover from one ARC problem to another.
+After reading the task, the agent retrieves symbolic concept families that appear relevant. A concept family is a broad explanation type with room for local variation. Examples include cropping, recoloring, rigid transforms, panel composition, symmetry, object connection, legend-guided extraction, motif completion, and enclosure repair.
 
-## Concept Families
+Concept families became an important shift in the project. A flat list of isolated rules was too brittle. Concept families let the agent keep the broad idea while testing different local choices inside that idea.
 
-I treated the symbolic concept classes as the agent's knowledge base. They cover rigid transforms, crops, recoloring, Boolean panel logic, symmetry, object movement, paths, legends, frames, motif completion, center connections, enclosure repair, and other visual patterns from the benchmark.
+## Fitting Explanations
 
-One of the most important changes was moving from single rules to concept families. A family lets the agent keep the broad explanation while testing several parameterizations. The shift mattered for tasks where the right idea was clear but the exact local choice was fragile.
+Once a concept family is selected, the agent tries to fit concrete explanations to the visible training pairs. A fitted explanation includes the transformation idea and the parameters needed to apply it.
 
-## Ranking and Repair
+For example, a panel-composition explanation may need to identify the separator, the two panels, the background color, the output color, and the Boolean relationship between the panels. A legend-guided explanation may need to identify the main object, read detached color pairs, infer a mapping, crop the object, and recolor it.
 
-Several explanations can fit the visible examples, and some can fit for the wrong reason. Ranking gives the agent a way to compare them using more than exact training accuracy.
+## Validating and Ranking
 
-Repair generation adds one more layer of search. If a candidate has the right family but one brittle choice, the agent can vary that choice in a controlled way. Center repairs may vary anchors or row-versus-column linking. Legend repairs may vary the selected object or mapping. Spiral repairs may vary path parameters. The repairs are still symbolic, so they remain inspectable.
+The agent tests each fitted explanation against the visible examples. Exact matches become strong candidates. Near misses can also be useful when they contain the right broad idea with one local choice wrong.
+
+Ranking became important because several explanations can fit the same visible examples. The agent compares candidates using visible fit, structural agreement, simplicity, confidence, and local consistency within the same problem. The goal is to prefer the explanation that is correct on the examples and most likely to generalize to the test case.
+
+## Repairing Fragile Candidates
+
+Some failures came from one fragile symbolic choice: selecting the wrong center, choosing the wrong symmetry mode, routing a path incorrectly, or reading the wrong object as the target.
+
+Targeted repair handles those cases by staying within a promising concept family and varying one local decision at a time. Repair gives the agent a controlled way to search nearby alternatives when the broad explanation looks right.
+
+## Final Prediction Selection
+
+The final stage selects up to three distinct predictions. I wanted those predictions to represent meaningful alternatives, not tiny variations of the same guess. The agent first prefers strong validated explanations, then considers repaired or near-miss candidates when they provide a plausible alternative.
+
+The architecture made the agent easier to improve. When a task failed, I could usually tell whether the problem was task reading, concept retrieval, hypothesis fitting, ranking, repair, or object selection. Debugging became much more useful than simply knowing the final answer was wrong.
