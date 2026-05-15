@@ -1,0 +1,166 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--code-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    line-height: var(--header-height);
+    background: var(--code-bg);
+}
+
+.nav a {
+    display: block;
+}
+
+.nav button {
+    font: inherit;
+}
+
+.logo,
+#menu {
+    display: flex;
+    margin: auto var(--gap);
+}
+
+.logo {
+    flex-wrap: inherit;
+}
+
+.logo a {
+    font-size: var(--headersize);
+    font-weight: var(--semibold);
+}
+
+.logo a img, .logo a svg {
+    display: inline;
+    vertical-align: middle;
+    pointer-events: none;
+    transform: translate(0, -10%);
+    border-radius: 6px;
+    margin-inline-end: 8px;
+}
+
+button#theme-toggle {
+    font-size: 20px;
+    margin: auto 4px;
+}
+
+body.dark #moon {
+    vertical-align: middle;
+    display: none;
+}
+
+body:not(.dark) #sun {
+    display: none;
+}
+
+#menu {
+    list-style: none;
+    word-break: keep-all;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+#menu li {
+    position: relative;
+}
+
+#menu li + li {
+    margin-inline-start: var(--gap);
+}
+
+#menu a {
+    font-size: var(--headersize);
+    font-weight: 400;
+}
+
+#menu .menu-parent {
+    padding: 0;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: default;
+}
+
+#menu .menu-has-children > a,
+#menu .menu-parent {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--headersize);
+    font-weight: 400;
+    line-height: var(--header-height);
+}
+
+#menu .menu-caret {
+    font-size: 0.8em;
+    line-height: 1;
+}
+
+#menu .submenu {
+    position: absolute;
+    top: calc(100% - 6px);
+    left: 0;
+    z-index: 20;
+    display: none;
+    min-width: 180px;
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+#menu .menu-has-children:hover > .submenu,
+#menu .menu-has-children:focus-within > .submenu {
+    display: block;
+}
+
+#menu .submenu li + li {
+    margin-inline-start: 0;
+}
+
+#menu .submenu a {
+    padding: 8px 14px;
+    line-height: 1.3;
+}
+
+#menu .submenu a:hover {
+    background: var(--theme);
+}
+
+#menu .active {
+    border-bottom: 2px solid var(--darkcolor);
+}
+
+.lang-switch li,
+.lang-switch ul,
+.logo-switches {
+    display: inline-flex;
+    margin: auto 4px;
+}
+
+.lang-switch {
+    display: flex;
+    flex-wrap: inherit;
+}
+
+.lang-switch a {
+    margin: auto 3px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.logo-switches {
+    flex-wrap: inherit;
+}

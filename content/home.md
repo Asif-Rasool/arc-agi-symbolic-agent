@@ -1,6 +1,5 @@
 ---
 title: "Home"
-description: "Project overview, benchmark result, and portfolio summary."
 ---
 
 ## Project Overview
@@ -29,9 +28,14 @@ On the CS7637 project benchmark, the final agent passed **93 of 96** evaluated p
 
 I read the result as strong performance within the course project benchmark, not as a general solution to ARC-AGI. The interesting part for me was not only the score, but the path to getting there: making the solver more explicit, more testable, and better at handling ambiguity.
 
-## What the Project Shows
+## Takeaway
 
-- How I framed visual reasoning as symbolic hypothesis search.
-- Why concept families worked better than isolated rules.
-- How validation, ranking, and repair helped when several explanations looked plausible.
-- Where the agent still struggled with underconstrained generation and distractor objects.
+The project changed how I thought about ARC-style reasoning.
+
+At first, I treated many tasks as rule-matching problems. If I could recognize the pattern, I could write a solver for it. The approach worked for some tasks, but it quickly became brittle.
+
+The better approach was to treat each task as a search over possible explanations. The agent needed to ask what kind of structure was present, which concept families were plausible, and which fitted explanation was most likely to generalize beyond the visible examples.
+
+The final version depends so much on feature extraction, validation, ranking, and repair for that reason. The components made the agent less like a collection of tricks and more like a small symbolic reasoning system.
+
+The remaining failures were not wasted effort. They showed me where the system was still too narrow: ambiguous generation, distractor objects, and cases where the right concept was found but the wrong symbolic choice was made.

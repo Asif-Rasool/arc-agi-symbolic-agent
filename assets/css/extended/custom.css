@@ -1,0 +1,376 @@
+.home .profile img {
+  border-radius: 0 !important;          /* force square frame */
+  filter: grayscale(100%);
+  width: 140px !important;
+  height: 140px !important;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.home .profile h1 {
+  margin-top: 8px;
+}
+
+#back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary, #4c566a);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 999;
+}
+
+#back-to-top:hover {
+  background: var(--primary-dark, #3b455f);
+}
+
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.download-link:hover .download-icon {
+  transform: translateY(1px);
+}
+
+.download-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.1s ease;
+}
+
+.profile .profile_inner span a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.profile .profile_inner span a:hover {
+  color: var(--darkcolor);
+}
+
+.profile-subtitle {
+  display: block;
+  width: 100%;
+  max-width: 680px;
+}
+
+.profile-created {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-intro {
+  max-width: 680px;
+  margin: 10px 0 4px;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--secondary);
+}
+
+.profile-intro p {
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+.post-header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-content table a {
+  white-space: nowrap;
+}
+
+.post-content p,
+.post-content li {
+  text-align: left;
+}
+
+.post-content .weekly-schedule table {
+  margin-inline: auto;
+}
+
+.post-content .weekly-schedule th,
+.post-content .weekly-schedule td {
+  padding-inline: 14px;
+  text-align: center !important;
+  vertical-align: middle;
+}
+
+.post-content .weekly-schedule th:nth-child(1),
+.post-content .weekly-schedule td:nth-child(1) {
+  min-width: 72px;
+}
+
+.post-content .weekly-schedule th:nth-child(2),
+.post-content .weekly-schedule td:nth-child(2) {
+  min-width: 130px;
+}
+
+.post-content details {
+  margin: 18px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--entry);
+}
+
+.post-content details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 16px;
+  color: var(--primary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  cursor: pointer;
+  list-style: none;
+  background: var(--code-bg);
+}
+
+.post-content details summary::-webkit-details-marker {
+  display: none;
+}
+
+.post-content details summary::after {
+  flex: 0 0 auto;
+  content: "+";
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--primary);
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.post-content details[open] summary::after {
+  content: "-";
+}
+
+.post-content details > :not(summary) {
+  margin-inline: 16px;
+}
+
+.post-content details h3 {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  width: 42px;
+  height: 42px;
+  margin: auto var(--gap) auto auto;
+  color: var(--primary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle-bar {
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 900px) {
+  .nav {
+    align-items: center;
+    line-height: 1.3;
+  }
+
+  .logo {
+    flex: 1 1 calc(100% - 74px);
+    min-width: 0;
+    margin: 8px 0 8px var(--gap);
+  }
+
+  .logo a {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.25;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  #menu {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 6px var(--gap) 12px;
+    white-space: normal;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav.nav-menu-open #menu {
+    display: flex;
+  }
+
+  #menu li + li {
+    margin-inline-start: 0;
+  }
+
+  #menu a,
+  #menu .menu-parent,
+  #menu .menu-has-children > a {
+    min-height: 44px;
+    line-height: 1.25;
+    padding: 10px 0;
+  }
+
+  #menu .submenu {
+    position: static;
+    display: block;
+    min-width: 0;
+    padding: 0 0 6px 14px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  #menu .submenu a {
+    min-height: 38px;
+    padding: 8px 0;
+    color: var(--secondary);
+  }
+
+  #menu .submenu a:hover {
+    background: transparent;
+    color: var(--primary);
+  }
+
+  .post-title {
+    font-size: 30px;
+    line-height: 1.15;
+  }
+
+  .post-content p,
+  .post-content li {
+    text-align: left;
+  }
+
+  .post-content table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .post-content table a {
+    white-space: normal;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --textsize: 16px;
+    --content-gap: 16px;
+    --marginleft: 8px;
+  }
+
+  .main {
+    padding: 18px var(--gap);
+  }
+
+  .main .profile {
+    align-items: flex-start;
+    min-height: auto;
+    padding: 36px 0;
+  }
+
+  .profile .profile_inner h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .home .profile img {
+    width: 112px !important;
+    height: 112px !important;
+  }
+
+  .buttons {
+    justify-content: flex-start;
+  }
+
+  .button {
+    margin: 4px 6px 4px 0;
+  }
+
+  .post-header {
+    margin-top: 10px;
+  }
+
+  .post-content h1 {
+    font-size: 30px;
+  }
+
+  .post-content h2 {
+    font-size: 22px;
+  }
+
+  .post-content dl {
+    display: block;
+  }
+
+  .post-content dt,
+  .post-content dd {
+    width: auto;
+    padding-inline-start: 0;
+  }
+
+  #back-to-top {
+    right: 1rem;
+    bottom: 1rem;
+    width: 42px;
+    height: 42px;
+  }
+}

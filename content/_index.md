@@ -1,4 +1,4 @@
 ---
-title: "ARC-AGI Symbolic Reasoning Agent"
-summary: "An interpretable knowledge-based AI agent for abstract visual reasoning."
+title: "A Knowledge-Based Agent for ARC-AGI"
+summary: "A Knowledge-Based Agent for ARC-AGI"
 ---
