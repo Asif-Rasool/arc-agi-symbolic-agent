@@ -1,0 +1,94 @@
+baseURL: "https://asif-rasool.github.io/arc-agi-symbolic-agent/"
+languageCode: "en-us"
+title: "ARC-AGI Symbolic Reasoning Agent"
+theme: "PaperMod"
+copyright: "&copy; 2026 Asif Rasool"
+enableInlineShortcodes: true
+enableRobotsTXT: true
+disableHugoGeneratorInject: true
+relativeURLs: false
+canonifyURLs: false
+disableKinds:
+  - taxonomy
+  - term
+  - RSS
+
+params:
+  description: "An interpretable knowledge-based AI agent for abstract visual reasoning."
+  author: "Asif Rasool"
+  hideAuthor: true
+  DateFormat: "January 2006"
+  defaultTheme: light
+  hideFooter: false
+  disableThemeToggle: true
+  ShowShareButtons: false
+  ShowReadingTime: false
+  disableSpecial1stPost: true
+  disableAnchoredHeadings: true
+  ShowPostNavLinks: false
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  ShowAllPagesInArchive: false
+  MainSections: ["home", "approach", "architecture", "results", "examples", "failure-analysis", "reflection"]
+  ShowToc: false
+  disableScrollToTop: false
+  TocOpen: true
+  ShowWordCount: false
+  UseHugoToc: true
+  comments: false
+  math: false
+  profileMode:
+    enabled: true
+    title: "ARC-AGI Symbolic Reasoning Agent"
+    subtitle: "An interpretable knowledge-based AI agent for abstract visual reasoning."
+    buttons:
+      - name: "Home"
+        url: "home/"
+      - name: "Approach"
+        url: "approach/"
+      - name: "Results"
+        url: "results/"
+      - name: "Examples"
+        url: "examples/"
+      - name: "GitHub"
+        url: "https://github.com/Asif-Rasool/arc-agi-symbolic-agent"
+  label:
+    text: "ARC-AGI Symbolic Reasoning Agent"
+  assets:
+    disableScrollBarStyle: true
+  cover:
+    hiddenInList: false
+    hiddenInSingle: true
+
+menu:
+  main:
+    - name: "Home"
+      pageRef: "/home"
+      weight: 10
+    - name: "Approach"
+      pageRef: "/approach"
+      weight: 20
+    - name: "Architecture"
+      pageRef: "/architecture"
+      weight: 30
+    - name: "Results"
+      pageRef: "/results"
+      weight: 40
+    - name: "Examples"
+      pageRef: "/examples"
+      weight: 50
+    - name: "Failure Analysis"
+      pageRef: "/failure-analysis"
+      weight: 60
+    - name: "Reflection"
+      pageRef: "/reflection"
+      weight: 70
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
+    ordered: false
