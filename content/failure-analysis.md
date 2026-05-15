@@ -1,6 +1,5 @@
 ---
 title: "Failure Analysis"
-description: "Hidden-test failures and what they reveal about the solver."
 ---
 
 ## 28e73c20: Brittle Spiral Generation

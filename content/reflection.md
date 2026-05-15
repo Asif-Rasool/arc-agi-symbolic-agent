@@ -1,6 +1,5 @@
 ---
 title: "Reflection"
-description: "Development lessons and comparison with human reasoning."
 ---
 
 ## Development Lessons

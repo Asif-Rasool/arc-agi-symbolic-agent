@@ -1,6 +1,5 @@
 ---
 title: "Results"
-description: "Verified course benchmark metrics and interpretation."
 ---
 
 ## Overall Performance

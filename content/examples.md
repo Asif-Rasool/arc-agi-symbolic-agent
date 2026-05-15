@@ -1,6 +1,5 @@
 ---
 title: "Examples"
-description: "Successful benchmark examples from the final report."
 ---
 
 ## 0520fde7: Separator-Based Boolean Composition

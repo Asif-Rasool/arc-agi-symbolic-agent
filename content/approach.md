@@ -1,6 +1,5 @@
 ---
 title: "Approach"
-description: "How the symbolic solver frames ARC tasks as interpretable hypothesis search."
 ---
 
 ## Core Idea

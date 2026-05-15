@@ -1,6 +1,5 @@
 ---
 title: "Architecture"
-description: "Implementation structure and major components in ArcAgent.py."
 ---
 
 ## System Structure
