@@ -6,7 +6,7 @@ title: "Approach"
 
 I designed the agent around one central idea: solve each task by searching for an explicit symbolic explanation. Each fitted hypothesis has parameters and a deterministic `predict()` routine.
 
-I start each task by asking what structure is visible in the examples. The agent measures grid shapes, colors, backgrounds, component counts, density, separators, and how the output size relates to the input. The measurements narrow the explanations worth trying.
+The agent starts each task by asking what structure is visible in the examples. It measures grid shapes, colors, backgrounds, component counts, density, separators, and how the output size relates to the input. The measurements narrow the explanations worth trying.
 
 ## Pipeline
 

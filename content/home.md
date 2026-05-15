@@ -4,7 +4,7 @@ title: "Home"
 
 ## Project Overview
 
-I built this agent as a symbolic reasoning system for ARC-style visual tasks. The project was developed for Georgia Tech's CS7637 Knowledge-Based AI course.
+I built this ARC-AGI agent as a symbolic reasoning system for abstract visual tasks. The project was developed for Georgia Tech's CS7637 Knowledge-Based AI course.
 
 My goal was to make the agent reason through each task before making a prediction. I designed it to read the structure of the examples, retrieve plausible symbolic concepts, fit concrete hypotheses, validate them against the visible training pairs, rank the candidates, and repair brittle local choices when possible.
 
@@ -24,7 +24,7 @@ On the CS7637 project benchmark, the final agent passed **93 of 96** evaluated p
 | Overall accuracy | 96.88% |
 | Runtime | about 20 seconds |
 
-I read the result as strong performance within the course project benchmark. The useful lesson was how much the agent improved when I treated each task as an explanation search.
+I read the result as strong performance within the course project benchmark. The most useful lesson was how much the agent improved once I treated each task as a search for an explanation.
 
 ## Where to Start
 

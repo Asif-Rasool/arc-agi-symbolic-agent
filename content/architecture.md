@@ -14,7 +14,7 @@ The main design goal was inspectability. I wanted to know why an answer was chos
 
 The first stage gives the agent a compact view of the training examples. It looks at structural cues such as grid size, output size, colors, background color, object components, density, separators, and whether the output looks like a crop, a transformation, a generated pattern, or a composition of multiple regions.
 
-The stage gives the rest of the system a better starting point. A separator suggests panel comparison, a smaller output suggests extraction, and a larger symmetric output suggests generative structure.
+This stage gives the rest of the system a better starting point. A separator suggests panel comparison, a smaller output suggests extraction, and a larger symmetric output suggests generative structure.
 
 ## Searching Through Concepts
 

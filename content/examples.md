@@ -12,7 +12,7 @@ My agent framed the task the same way. Feature extraction detected the separator
 
 `SplitBoolean` treats the two sides as aligned masks and searches for a cell-by-cell Boolean relationship. The solution worked because one comparison rule explained every visible training output, even though the final pattern changed across examples.
 
-I cared about this example because one strong structural cue made the search much smaller.
+This example mattered because one strong structural cue made the search much smaller.
 
 ## 62c24649: Generative Symmetry from a Small Seed
 
@@ -24,7 +24,7 @@ My agent framed the task as generative because the output was larger than the in
 
 For the symmetry example, the fitted hypothesis treated the input as a seed, mirrored it across horizontal and vertical axes, and placed the copies into a larger arrangement. One symmetric construction explained all visible examples.
 
-I cared about this example because the agent generated structure from a small input seed.
+This example was important because the agent had to generate structure from a small input seed, not just extract or recolor what was already there.
 
 ## e9b4f6fc: Legend-Guided Extraction and Recoloring
 
@@ -36,4 +36,4 @@ My agent framed the task as extraction plus recoloring. The successful concept f
 
 For the legend example, the fitted explanation selected the main object, read the detached pairs as a source-to-target color map, cropped the relevant region, and applied the mapping. The same "read the legend, then recolor the object" procedure fit the visible examples.
 
-I cared about this example because ranking had to choose the interpretation that aligned object choice, extraction, and recoloring.
+This example showed why ranking mattered: the agent had to choose the interpretation that aligned object choice, extraction, and recoloring.

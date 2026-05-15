@@ -2,7 +2,7 @@
 title: "Failure Analysis"
 ---
 
-The most useful failures happened when my agent found the right broad concept family but failed on a local symbolic choice.
+The most useful failures were the ones where the agent found the right broad concept family but failed on a local symbolic choice.
 
 ## 28e73c20: Brittle Spiral Generation
 

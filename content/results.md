@@ -16,7 +16,7 @@ My final agent reached the following result on the CS7637 project benchmark:
 | Overall accuracy | 96.88% |
 | Runtime | about 20 seconds |
 
-Passing every visible training problem showed that the concept library covered the visible problem families in the benchmark. I care more about the hidden test score because it shows whether the explanations generalized beyond the examples I could inspect directly.
+Passing every visible training problem suggested that the concept library covered the visible problem families in the benchmark. I care more about the hidden test score because it shows whether the explanations generalized beyond the examples I could inspect directly.
 
 ## Set-by-Set Results
 
