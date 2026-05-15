@@ -58,8 +58,8 @@ params:
         url: "results/"
       - name: "Examples"
         url: "examples/"
-      - name: "Website Repo"
-        url: "https://github.com/Asif-Rasool/arc-agi-symbolic-agent"
+      - name: "Reflection"
+        url: "reflection/"
   label:
     text: "A Knowledge-Based Agent for ARC-AGI"
   assets:
