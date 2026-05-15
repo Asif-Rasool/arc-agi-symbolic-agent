@@ -4,32 +4,32 @@ title: "Approach"
 
 ## Core Idea
 
-I designed the agent around one central idea: solve each task by searching for an explicit explanation. A candidate answer is not an opaque score or a learned embedding. It is a symbolic hypothesis with parameters and a deterministic `predict()` routine.
+I designed the agent around one central idea: solve each task by searching for an explicit symbolic explanation. Each fitted hypothesis has parameters and a deterministic `predict()` routine.
 
-The agent starts by trying to understand the structure of the task. It measures grid shapes, colors, backgrounds, component counts, density, separators, and how the output size relates to the input. The measurements do not solve the problem by themselves, but they help the agent decide what kind of explanation is worth trying.
+I start each task by asking what structure is visible in the examples. The agent measures grid shapes, colors, backgrounds, component counts, density, separators, and how the output size relates to the input. The measurements narrow the explanations worth trying.
 
 ## Pipeline
 
-The final pipeline is:
+I ended up with this pipeline:
 
-**Feature extraction -> concept retrieval -> hypothesis fitting -> training validation -> ranking -> targeted repair generation -> final prediction selection.**
+**Feature extraction → concept retrieval → hypothesis fitting → training validation → ranking → targeted repair generation → final prediction selection.**
 
-Feature extraction gives the agent a first read on the problem. If an output is smaller than the input, extraction becomes more plausible. If a separator divides the grid into panels, composition becomes more plausible. If the output grows into a larger regular pattern, the agent should consider generative symmetry or pattern construction.
+Feature extraction gives the agent a first read on the problem. A smaller output points toward extraction. A separator points toward panel composition. A larger regular output points toward generative symmetry or pattern construction.
 
-Concept retrieval uses that first read to choose a smaller set of symbolic concept families. I found that families were more useful than one-off rules because many ARC tasks share a broad idea but differ in local details. A center-connection problem, for example, may require the same high-level reasoning even when the exact anchors or path choices vary.
+Concept retrieval uses that first read to choose a smaller set of symbolic concept families. I found concept families useful because many ARC tasks share a broad idea while changing local details. A center-connection problem, for example, may require the same high-level reasoning even when the exact anchors or path choices vary.
 
-Hypothesis fitting turns those broad families into concrete explanations. Instead of asking whether a task is "about symmetry" in general, the agent tries specific symmetry hypotheses with specific parameters. The same pattern holds for crops, recoloring, Boolean panel operations, legend-guided extraction, paths, frames, and object relations.
+Hypothesis fitting turns broad families into concrete explanations. For a symmetry task, the agent tries specific symmetry hypotheses with specific parameters. The same idea applies to crops, recoloring, Boolean panel operations, legend-guided extraction, paths, frames, and object relations.
 
-Training validation checks those fitted hypotheses against the visible examples. Exact matches matter, but I learned that exact matching alone was not enough. A near miss can still contain the right idea with one wrong symbolic choice. Throwing it away too early made the agent brittle.
+Training validation checks fitted hypotheses against the visible examples. Exact matches matter. Near misses also matter when they contain the right idea with one wrong symbolic choice, so I kept some of them available for ranking and repair.
 
-Ranking became the bridge between fitting and prediction. The ranker weighs training error, confidence, complexity, structural fit, and local analogy within the current problem. Its job is to prefer explanations that both match the visible examples and make sense for the kind of task the agent thinks it is solving.
+Ranking became the bridge between fitting and prediction. I used the ranker to weigh training error, confidence, complexity, structural fit, and local analogy within the current problem. Its job is to prefer explanations that both match the visible examples and make sense for the kind of task the agent appears to be solving.
 
-Targeted repair generation came later. Some hypotheses clearly had the right broad idea but failed because of one local decision, such as a center choice, symmetry mode, path route, frame interpretation, or legend mapping. Repairs let the agent search nearby variants without abandoning the concept family.
+Targeted repair generation came later. Some hypotheses had the right broad idea but failed because of one local decision, such as a center choice, symmetry mode, path route, frame interpretation, or legend mapping. Repairs let the agent search nearby variants within the same concept family.
 
-Final prediction selection takes the strongest exact, repaired, and near-miss candidates and returns up to three distinct predictions. I wanted the outputs to represent meaningful alternatives rather than tiny variations of the same guess.
+Final prediction selection uses the strongest exact, repaired, and near-miss candidates to return up to three distinct predictions. I wanted the outputs to represent meaningful alternatives.
 
 ## Why Symbolic Search
 
-I chose symbolic search because ARC problems reward explanation. A black-box model might produce an answer, but I wanted to know why a particular answer was chosen and how the same reasoning applied across examples.
+I chose symbolic search because ARC problems reward explanation. I wanted to know why a particular answer was chosen and how the same reasoning applied across examples.
 
-The tradeoff is clear. The agent can only search over the concepts I gave it. At the same time, the search is readable. I can inspect which concept was retrieved, which parameters were fitted, which examples passed validation, why one candidate outranked another, and where a failure began.
+The tradeoff is clear. The agent searches over the concepts I gave it, and the search is readable. I can inspect which concept was retrieved, which parameters were fitted, which examples passed validation, why one candidate outranked another, and where a failure began.

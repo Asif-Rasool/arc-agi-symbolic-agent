@@ -1,8 +1,10 @@
-# ARC-AGI Symbolic Reasoning Agent
+# A Knowledge-Based Agent for ARC-AGI
 
-Standalone Hugo PaperMod website for the ARC-AGI Symbolic Reasoning Agent portfolio case study.
+Standalone Hugo PaperMod website for A Knowledge-Based Agent for ARC-AGI.
 
-The full implementation lives in a separate ARC-AGI code repository. Update the GitHub link in `hugo.yaml` after the public implementation URL is finalized.
+Live website: https://asif-rasool.github.io/arc-agi-symbolic-agent/
+
+The full implementation currently lives in a separate ARC-AGI code repository. I may make selected implementation files public after reviewing course and repository-sharing constraints.
 
 ## Local Development
 
