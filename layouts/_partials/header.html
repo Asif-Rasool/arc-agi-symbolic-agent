@@ -149,6 +149,7 @@
                 {{- else }}
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
                 {{- if .HasChildren }} aria-haspopup="true" aria-expanded="false"{{ end }}
+                {{- if $is_current }} aria-current="page"{{ end }}
                 {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
                     <span {{- if $is_current }} class="active" {{- end }}>
                         {{- .Pre }}

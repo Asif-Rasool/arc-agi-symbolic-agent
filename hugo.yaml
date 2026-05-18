@@ -48,9 +48,9 @@ params:
 
       ARC-AGI uses simple grids, colors, objects, and spatial relationships in place of domain facts or language knowledge. Its tasks ask a solver to recognize structure, form an abstraction, and apply a rule from a small number of examples.
 
-      I approached my agent from that perspective. I treated each task as a search for an explanation, similar in spirit to case-based reasoning in Knowledge-Based AI. The agent reads the structure of the examples, retrieves plausible symbolic concepts, fits candidate explanations, and chooses the one most likely to generalize.
+      I approached my agent from that perspective. I treated each task as a search for an explanation, similar in spirit to case-based reasoning in Knowledge-Based AI. The agent reads the structure of the examples, retrieves plausible symbolic concepts, fits candidate explanations, and chooses the one most likely to generalize. Read the full paper here: [Download paper](Final%20ARC-AGI%20Project_AR.pdf).
     buttons:
-      - name: "Home"
+      - name: "Overview"
         url: "home/"
       - name: "Approach"
         url: "approach/"
@@ -73,26 +73,29 @@ params:
 menu:
   main:
     - name: "Home"
-      pageRef: "/home"
+      pageRef: "/"
       weight: 10
+    - name: "Overview"
+      pageRef: "/home"
+      weight: 20
     - name: "Approach"
       pageRef: "/approach"
-      weight: 20
+      weight: 30
     - name: "Architecture"
       pageRef: "/architecture"
-      weight: 30
+      weight: 40
     - name: "Results"
       pageRef: "/results"
-      weight: 40
+      weight: 50
     - name: "Examples"
       pageRef: "/examples"
-      weight: 50
+      weight: 60
     - name: "Failure Analysis"
       pageRef: "/failure-analysis"
-      weight: 60
+      weight: 70
     - name: "Reflection"
       pageRef: "/reflection"
-      weight: 70
+      weight: 80
 
 markup:
   goldmark:

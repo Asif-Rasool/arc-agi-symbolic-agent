@@ -140,7 +140,16 @@ body:not(.dark) #sun {
 }
 
 #menu .active {
-    border-bottom: 2px solid var(--darkcolor);
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 10px;
+    color: var(--primary);
+    font-weight: 700;
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: inset 0 -2px 0 var(--darkcolor);
 }
 
 .lang-switch li,

@@ -113,6 +113,22 @@
   text-align: left;
 }
 
+.profile-intro a,
+.post-content a {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.profile-intro a:hover,
+.post-content a:hover {
+  color: var(--darkcolor);
+  text-decoration-thickness: 2px;
+}
+
 .profile .buttons {
   flex-wrap: nowrap;
   gap: 8px;
